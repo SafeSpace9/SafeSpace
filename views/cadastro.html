@@ -14,7 +14,14 @@
             <span>Safe<span class="green">Space</span></span>
         </div>
         <form id="loginForm">
-            
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+            </div>
+            <div class="form-group">
+                <label for="rm">Rm</label>
+                <input type="text" id="rm" name="rm" placeholder="Seu RM" required>
+            </div>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="Seu email" required>
@@ -23,15 +30,13 @@
                 <label for="password">Senha</label>
                 <input type="password" id="password" name="password" placeholder="Sua senha" required>
             </div>
-            <div class="forgot-password">
-                <a href="#">Esqueceu a senha?</a>
-            </div>
-            <button type="submit" class="login-btn">Entrar</button>
+          
+            <button type="submit" class="login-btn">Cadastre-se</button>
             <div class="signup-link">
-                Não tem uma conta? <a href="/views/cadastro.html">Cadastre-se</a>
+                Já tem uma conta? <a href="/views/Login.html">Entrar</a>
             </div>
         </form>
     </div>
-    <script src="/scripts/login.js"></script>
+    <script src="/scripts/cadastro.js"></script>
 </body>
 </html>
