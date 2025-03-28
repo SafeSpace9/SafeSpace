@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SafeSpace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/styles/dashboard.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="/images/logo-space-removebg.png" alt="SafeSpace Logo">
+                <span>Safe<span class="color-space">Space</span></span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active">
+                        <a href="#overview"><i class="fas fa-home"></i> Visão Geral</a>
+                    </li>
+                    <li>
+                        <a href="#denuncias"><i class="fas fa-exclamation-circle"></i> Denúncias</a>
+                    </li>
+                    <li>
+                        <a href="#feedbacks"><i class="fas fa-comment"></i> Feedbacks</a>
+                    </li>
+                    <li>
+                        <a href="#estatisticas"><i class="fas fa-chart-bar"></i> Estatísticas</a>
+                    </li>
+                    <li>
+                        <a href="#configuracoes"><i class="fas fa-cog"></i> Configurações</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" id="logout"><i class="fas fa-sign-out-alt"></i> Sair</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Pesquisar denúncias...">
+                </div>
+                <div class="user-info">
+                    <span class="notification-badge">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </span>
+                    <div class="admin-profile">
+                        <img src="/images/admin-avatar.png" alt="Admin">
+                        <span>Administrador</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-content">
+                <!-- Cards de Resumo -->
+                <section class="summary-cards">
+                    <div class="card">
+                        <div class="card-icon" style="background: rgba(58, 120, 84, 0.1)">
+                            <i class="fas fa-exclamation-circle" style="color: #3A7854"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3>Total de Denúncias</h3>
+                            <p class="number">24</p>
+                            <span class="trend positive">+12% essa semana</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon" style="background: rgba(255, 99, 71, 0.1)">
+                            <i class="fas fa-clock" style="color: tomato"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3>Pendentes</h3>
+                            <p class="number">8</p>
+                            <span class="trend negative">5 urgentes</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon" style="background: rgba(46, 204, 113, 0.1)">
+                            <i class="fas fa-check-circle" style="color: #2ecc71"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3>Resolvidas</h3>
+                            <p class="number">16</p>
+                            <span class="trend positive">+3 hoje</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon" style="background: rgba(52, 152, 219, 0.1)">
+                            <i class="fas fa-comment" style="color: #3498db"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3>Feedbacks</h3>
+                            <p class="number">12</p>
+                            <span class="trend neutral">2 novos</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Lista de Denúncias Recentes -->
+                <section class="recent-reports">
+                    <div class="section-header">
+                        <h2>Denúncias Recentes</h2>
+                        <div class="filter-controls">
+                            <select id="filterStatus" class="filter-select">
+                                <option value="todos">Todos os Status</option>
+                                <option value="pendente">Pendente</option>
+                                <option value="em_analise">Em Análise</option>
+                                <option value="resolvido">Resolvido</option>
+                            </select>
+                            <select id="filterTipo" class="filter-select">
+                                <option value="todos">Todos os Tipos</option>
+                                <option value="bullying">Bullying</option>
+                                <option value="discriminacao">Discriminação</option>
+                                <option value="assedio">Assédio</option>
+                                <option value="violencia">Violência</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="outros">Outros</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="reports-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Tipo</th>
+                                    <th>Assunto</th>
+                                    <th>Data</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="denunciasTableBody">
+                                <!-- Preenchido via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Gráficos e Estatísticas -->
+                <section class="statistics">
+                    <div class="chart-container">
+                        <h3>Tipos de Denúncias</h3>
+                        <canvas id="denunciasChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Status das Denúncias</h3>
+                        <canvas id="statusChart"></canvas>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal de Detalhes da Denúncia -->
+    <div id="denunciaModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Detalhes da Denúncia</h2>
+            <div id="denunciaDetails">
+                <!-- Preenchido via JavaScript -->
+            </div>
+            <div class="modal-actions">
+                <button class="btn-action btn-analisar">Marcar Em Análise</button>
+                <button class="btn-action btn-resolver">Marcar como Resolvido</button>
+                <button class="btn-action btn-arquivar">Arquivar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/scripts/dashboard.js"></script>
+</body>
+
+</html>

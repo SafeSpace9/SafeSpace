@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/form.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeSpace - Enviar Denúncia</title>
+</head>
+<body>
+    <header>
+        <nav>
+          <a class="logo" href="index.html"><img id="logoside" src="/images/logo-space-removebg.png" alt=""> Safe<span class="color-space">Space</span></a>
+          <div class="mobile-menu">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+          </div> <!--mobile-menu--> 
+
+        </nav>
+      </header> <!--header-->
+    <div class="form-container">
+        <img  src="/images/logo-space-removebg.png" alt="SafeSpace Logo" class="form-logo">
+        <h1 class="form-title">Envie sua Denúncia Anônima</h1>
+        <p class="form-description">Contribua para um ambiente escolar seguro, enviando sua denúncia ou feedback anonimamente.</p>
+
+        <form id="denunciaForm" class="form-content" action="/api/denuncia" method="POST" enctype="multipart/form-data">
+            <!-- Tipo de Denúncia -->
+            <label for="tipoDenuncia">Tipo de ocorrência</label>
+            <select id="tipodenuncia" name="tipoDenuncia">
+                <option  value="denuncia">Denúncias</option>
+                <option value="feedback">Feedback</option>
+            </select>
+
+            <!-- Tipo de Problema -->
+            <label for="tipoProblema">Tipo de Problema</label>
+            <select id="tipoproblema" name="tipoProblema">
+                <option value="bullying">Bullying</option>
+                <option value="assedio">Assédio</option>
+                <option value="violencia">Violência</option>
+                <option value="discriminacao">Discriminação</option>
+                <option value="outra">Outra</option>
+            </select>
+
+            <!-- Assunto -->
+            <label for="assunto">Assunto</label>
+            <input class="remove-outline" type="text" id="assunto" name="assunto" placeholder="Digite o assunto">
+
+            <!-- Descrição -->
+            <label for="descricao">Descrição</label>
+            <textarea class="remove-outline" id="descricao" name="descricao" placeholder="Descreva sua denúncia ou feedback"></textarea>
+
+            <!-- Anexar Arquivos (Opcional) -->
+            <label for="arquivo">Anexar Arquivo (Opcional)</label>
+            <input type="file" id="arquivo" name="arquivo" multiple>
+            <ul id="fileList"></ul>
+
+            <!-- Botão de Envio -->
+            <button type="submit" id="button_denuncia" class="form-button">Enviar Denúncia</button>
+        </form>
+        </div>
+        <script src="/scripts/form.js"></script>
+    </body>
+    </html>

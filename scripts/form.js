@@ -1,5 +1,6 @@
 const inputFile = document.getElementById('arquivo');
 const fileList = document.getElementById('fileList');
+const DENUNCIAS_KEY = 'denuncias';
 
 function updateFileList() {
   const files = inputFile.files;
@@ -38,10 +39,21 @@ function removeFile(index) {
   updateFileList();
 }
 
+function salvarDenuncia(novaDenuncia) {
+  // Recupera denúncias existentes ou inicializa array vazio
+  const denuncias = JSON.parse(localStorage.getItem(DENUNCIAS_KEY)) || [];
+
+  // Gera ID único baseado em timestamp
+  novaDenuncia.id = Date.now();
+
+  // Adiciona a nova denúncia ao início do array (para aparecer primeiro na lista)
+  denuncias.unshift(novaDenuncia);
+
+  // Salva no localStorage
+  localStorage.setItem(DENUNCIAS_KEY, JSON.stringify(denuncias));
+}
+
 inputFile.addEventListener('change', updateFileList);
-
-
-
 
 document.getElementById("denunciaForm").addEventListener("submit", function(event) {
   event.preventDefault(); 
@@ -51,6 +63,7 @@ document.getElementById("denunciaForm").addEventListener("submit", function(even
   const assunto = document.getElementById("assunto").value;
   const descricao = document.getElementById("descricao").value;
 
+  // Validação dos campos
   if (!assunto.trim()) {
       alert("Por favor, preencha o campo Assunto.");
       return; 
@@ -61,27 +74,31 @@ document.getElementById("denunciaForm").addEventListener("submit", function(even
       return; 
   }
 
+  // Cria objeto com os dados da denúncia
+  const novaDenuncia = {
+    tipo: tipoProblema,
+    assunto: assunto,
+    descricao: descricao,
+    data: new Date().toISOString().split('T')[0],
+    status: 'pendente',
+    urgente: tipoProblema === 'bullying' || tipoProblema === 'violencia' || tipoProblema === 'assedio'
+  };
 
-  const formData = new FormData();
-  formData.append("tipoDenuncia", tipoDenuncia);
-  formData.append("tipoProblema", tipoProblema);
-  formData.append("assunto", assunto);
-  formData.append("descricao", descricao);
+  try {
+    // Salva a denúncia
+    salvarDenuncia(novaDenuncia);
 
+    // Feedback ao usuário
+    alert("Denúncia enviada com sucesso! Sua identidade será mantida em sigilo.");
 
-  fetch("/submitDenuncia", {
-      method: "POST",
-      body: formData
-  })
-  .then(response => response.json())
-  .then(data => {
-      if (data.success) {
-          alert("Denúncia enviada com sucesso!");
-      } else {
-          alert("Erro ao enviar denúncia.");
-      }
-  })
-  .catch(error => {
-      console.error("Erro:", error);
-  });
+    // Limpa o formulário
+    document.getElementById("denunciaForm").reset();
+    fileList.innerHTML = '';
+
+    // Redireciona para a página inicial
+    window.location.href = "/index.html";
+  } catch (error) {
+    console.error("Erro ao salvar denúncia:", error);
+    alert("Erro ao enviar denúncia. Por favor, tente novamente.");
+  }
 });
