@@ -55,8 +55,8 @@
                         <i class="fas fa-bell"></i>
                         <span class="notification-badge">2</span>
                     </div>
-                    <img src="/images/admin-avatar.png" alt="Admin" class="user-avatar">
-                    <span id="adminUsername">Administrador</span>
+                    <img src="/images/davi.jpg" alt="Admin" class="user-avatar">
+                    <span id="adminUsername">Davi Melo</span>
                     <button onclick="logout()" class="logout-btn">
                         <i class="fas fa-sign-out-alt"></i>
                         Sair
@@ -190,17 +190,6 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="/scripts/dashboard.js"></script>
-    <script>
- unction logout() {
-                localStorage.removeItem('admin_authenticated');
-                localStorage.removeItem('admin_username');
-                window.location.href = '/views/admin-login.html';
-            }
     
-            // Atualiza o nome do usuário
-            document.getElementById('adminUsername').textContent =
-                localStorage.getItem('admin_username') || 'Admirador';
-    </script>
 </body>
-
-</html>
+</html> 

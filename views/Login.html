@@ -1,37 +1,51 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login SS</title>
-    <link rel="stylesheet" href="/styles/login.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <title>SafeSpace - Login Administrativo</title>
+    <link rel="icon" href="/images/logo-space.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/styles/admin-login.css">
 </head>
+
 <body>
     <div class="login-container">
-        <div class="logo">
-            <img src="/images/logo-space-removebg.png" alt="Logo">
-            <span>Safe<span class="green">Space</span></span>
+        <div class="login-card">
+            <div class="login-header">
+                <img src="/images/logo-space-removebg.png" alt="SafeSpace Logo" class="logo">
+                <h1>SafeSpace</h1>
+                <p>Área Estudante</p>
+            </div>
+            <form id="loginForm" class="login-form">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" placeholder="Nome de usuário" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="Senha" required>
+                    <i class="fas fa-eye toggle-password"></i>
+                </div>
+                <div class="error-message" id="errorMessage"></div>
+                <button type="submit" class="login-button">
+                    <span>Entrar</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+            <div class="login-footer">
+                <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                <a href="/" class="back-home">
+                    <i class="fas fa-home"></i>
+                    Voltar para o site
+                </a>
+            </div>
         </div>
-        <form id="loginForm">
-            
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Seu email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Senha</label>
-                <input type="password" id="password" name="password" placeholder="Sua senha" required>
-            </div>
-            <div class="forgot-password">
-                <a href="#">Esqueceu a senha?</a>
-            </div>
-            <button type="submit" class="login-btn">Entrar</button>
-            <div class="signup-link">
-                Não tem uma conta? <a href="/views/cadastro.html">Cadastre-se</a>
-            </div>
-        </form>
     </div>
-    <script src="/scripts/login.js"></script>
+    <script src="/scripts/admin-login.js"></script>
 </body>
+
 </html>
