@@ -51,14 +51,16 @@
                     <input type="text" placeholder="Pesquisar denúncias...">
                 </div>
                 <div class="user-info">
-                    <span class="notification-badge">
+                    <div class="notifications">
                         <i class="fas fa-bell"></i>
-                        <span class="badge">3</span>
-                    </span>
-                    <div class="admin-profile">
-                        <img src="/images/admin-avatar.png" alt="Admin">
-                        <span>Administrador</span>
+                        <span class="notification-badge">2</span>
                     </div>
+                    <img src="/images/admin-avatar.png" alt="Admin" class="user-avatar">
+                    <span id="adminUsername">Administrador</span>
+                    <button onclick="logout()" class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Sair
+                    </button>
                 </div>
             </header>
 
@@ -179,8 +181,26 @@
         </div>
     </div>
 
+    <!-- Scripts -->
+    <script>
+        // Verificação imediata de autenticação
+        if (!localStorage.getItem('admin_authenticated')) {
+            window.location.href = '/views/admin-login.html';
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="/scripts/dashboard.js"></script>
+    <script>
+ unction logout() {
+                localStorage.removeItem('admin_authenticated');
+                localStorage.removeItem('admin_username');
+                window.location.href = '/views/admin-login.html';
+            }
+    
+            // Atualiza o nome do usuário
+            document.getElementById('adminUsername').textContent =
+                localStorage.getItem('admin_username') || 'Admirador';
+    </script>
 </body>
 
 </html>

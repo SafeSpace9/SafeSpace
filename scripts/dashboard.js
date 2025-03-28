@@ -1,6 +1,17 @@
 // Verificação de autenticação
-if (!localStorage.getItem('admin_authenticated')) {
-    window.location.href = '/views/admin-login.html';
+function checkAuth() {
+    const isAuthenticated = localStorage.getItem('admin_authenticated') === 'true';
+    if (!isAuthenticated) {
+        window.location.href = '/views/admin-login.html';
+        return false;
+    }
+    return true;
+}
+
+// Verificar autenticação imediatamente
+if (!checkAuth()) {
+    // Se não estiver autenticado, o redirecionamento já foi feito
+    throw new Error('Não autenticado');
 }
 
 // Constantes

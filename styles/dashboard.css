@@ -437,3 +437,24 @@ tbody tr:hover {
     border-color: #3A7854;
     box-shadow: 0 0 0 2px rgba(58, 120, 84, 0.1);
 }
+.logout-btn {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    margin-left: 15px;
+}
+
+.logout-btn:hover {
+    color: var(--danger-color);
+}
+
+.logout-btn i {
+    font-size: 1.1rem;
+}
