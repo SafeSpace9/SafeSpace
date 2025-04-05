@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeSpace - Cadastro de Estudante</title>
+    <link rel="icon" href="/images/logo-space.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/styles/admin-login.css">
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <img src="/images/logo-space-removebg.png" alt="SafeSpace Logo" class="logo">
+                <h1>SafeSpace</h1>
+                <p>Cadastro de Estudante</p>
+            </div>
+            <form id="registerForm" class="login-form">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="fullName" placeholder="Nome Completo" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-id-card"></i>
+                    <input type="text" id="matricula" placeholder="Matrícula" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="Senha" required>
+                    <i class="fas fa-eye toggle-password"></i>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="confirmPassword" placeholder="Confirmar Senha" required>
+                    <i class="fas fa-eye toggle-password"></i>
+                </div>
+                <div class="error-message" id="errorMessage"></div>
+                <button type="submit" class="login-button">
+                    <span>Cadastrar</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+            <div class="login-footer">
+                <div class="login-links">
+                    <a href="/views/Login.html" class="register-link">Já possui uma conta? Faça login</a>
+                </div>
+                <a href="/" class="back-home">
+                    <i class="fas fa-home"></i>
+                    Voltar para o site
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle password visibility
+        document.querySelectorAll('.toggle-password').forEach(icon => {
+            icon.addEventListener('click', function() {
+                const input = this.previousElementSibling;
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    this.classList.remove('fa-eye');
+                    this.classList.add('fa-eye-slash');
+                } else {
+                    input.type = 'password';
+                    this.classList.remove('fa-eye-slash');
+                    this.classList.add('fa-eye');
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            if (password !== confirmPassword) {
+                errorMessage.textContent = 'As senhas não coincidem';
+                return;
+            }
+            
+            // Aqui você pode adicionar a lógica para enviar os dados para o servidor
+            // Por exemplo:
+            /*
+            const formData = {
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                matricula: document.getElementById('matricula').value,
+                password: password
+            };
+            */
+            
+            // Por enquanto, apenas mostra uma mensagem de sucesso
+            alert('Cadastro realizado com sucesso!');
+            window.location.href = '/views/Login.html';
+        });
+    </script>
+</body>
+
+</html>

@@ -30,10 +30,11 @@
             <li><a href="#sobre">Sobre</a></li>
             <li><a href="#testemunhas">Feedback</a></li>
             <li><a href="#footer">Contato</a></li>
+            <li><a href="/views/admin-login.html" class="admin-link"><i class="fas fa-user-shield"></i></a></li>
           </ul> <!--nav-list-->
         </nav>
       </header> <!--header-->
-    <main>
+    <main>  
         
         
         <section class="topo-do-site">
@@ -45,9 +46,7 @@
                         <p>Criatividade e inovação andam lado a lado. Com uma combinação única de design impactante, funcionalidade intuitiva e otimização para resultados, estou pronto(a) para criar a presença online dos seus sonhos.</p>
 
                         <div class="btn-contato">
-                            <a  href="/views/Login.html"> 
-                                <button>Fazer Denuncia</button>
-                            </a>    
+                            <button onclick="showLoginOptions()">Fazer Denúncia</button>
                         </div>
                     </div><!--txt-topo-site-->
 
@@ -57,6 +56,43 @@
                 </div><!--flex-->
             </div><!--interface-->
         </section><!--topo-do-site-->
+<!-- Modal de Seleção de Login -->
+<div id="loginOptionsModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeLoginModal()">&times;</span>
+        <img src="/images/logo-space-removebg.png" alt="SafeSpace Logo" class="modal-logo">
+        <h1 class="modal-h1">Escolha o tipo de acesso</h1>
+        <p class="modal-p">Selecione o tipo de usuário para continuar</p>
+
+        <button class="modal-button" onclick="window.location.href='/views/Login.html'" style="margin-bottom: 10px;">
+            <i class="fas fa-user"></i> Acesso Estudante
+        </button>
+
+        <button class="modal-button" onclick="window.location.href='/views/admin-login.html'"
+            style="background-color: #1e1c2a;">
+            <i class="fas fa-user-shield"></i> Acesso Administrativo
+        </button>
+    </div>
+</div>
+
+<script>
+    function showLoginOptions() {
+        document.getElementById('loginOptionsModal').style.display = 'flex';
+    }
+
+    function closeLoginModal() {
+        document.getElementById('loginOptionsModal').style.display = 'none';
+    }
+
+    // Fechar o modal se clicar fora dele
+    window.onclick = function (event) {
+        const modal = document.getElementById('loginOptionsModal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+</script>
+
         <section class="especiliadades">
             <div class="interface">
                 <h2 class="titulo">Por que utilizar Safe<span>Space</span></h2>
@@ -198,6 +234,12 @@
                     <h3>Guias e tutoriais</h3>
                 </li>
                 <li>
+                    <a href="/views/admin-login.html" class="footer-link">
+                        <i class="fas fa-user-shield"></i>
+                        Área Administrativa
+                    </a>
+                    </li>
+                    <li>
                     <a href="#" class="footer-link">Como usar a plataforma</a>
                 </li>
                 <li>
