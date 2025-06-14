@@ -119,55 +119,123 @@
         </section><!--especiliadades-->
         <section class="Testemunhas">
 
-            <div id="feedback" class="testimonials">
-              <div class="inner">
-                <h1 id="testemunhas" >Testemunhas</h1>
-                <div class="border"></div>
-        
-                <div class="row">
-                    <div class="col">
-                        <div class="testimonial">
-                        <img src="/images/p1.png" alt="">
-                        <div class="name">João Santos</div>
-                        <div class="estrelas">
-                            <h1>★★★★★</h1>
-                          </div>
-                        
-                        <p>
-                            "O safeSpace ajudou a melhorar a comunicação entre os alunos e a direção. Agora, sinto que somos realmente ouvidos"
-                        </p>
-                        </div>
-                  </div>
-        
-                  <div class="col">
-                    <div class="testimonial">
-                      <img src="/images/anonimo.png" alt="">
-                      <div class="name">Usuario anonimo</div>
-                      <div class="estrelas">
-                        <h1>★★★★★</h1>
-                      </div>
-                      <p>
-                        "O safe space foi essencial para que eu pudesse expressar minhas preocupações com a escola de forma anonima e sem medo"
-                      </p>
-                    </div>
-                  </div>
-        
-                  <div class="col">
-                    <div class="testimonial">
-                      <img src="/images/p3.png" alt="">
-                      <div class="name">Lucas Fernandes</div>
-                      <div class="estrelas">
-                        <h1>★★★★★</h1>
-                      </div>
-                      <p>
-                        "Me senti seguro ao usar o safe space para relatar um problema. A plataforma realmente faz a diferença"
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+            <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Depoimentos de Empresas</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .testemunhos {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .testemunhos h2 {
+      font-size: 28px;
+      color: #333;
+    }
+
+    .linha-verde {
+      width: 80px;
+      height: 4px;
+      background-color: #4CAF50;
+      margin: 10px auto 40px;
+      border-radius: 5px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      padding: 30px 20px;
+      width: 300px;
+      text-align: left; /* Alinha o texto à esquerda */
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start; /* Alinha elementos filhos à esquerda */
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .logo_empresa{
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin: 0 auto 10px; /* Centraliza a imagem horizontalmente */
+      display: block; 
+    }
+
+    .card h3 {
+      font-size: 20px;
+      color: #222;
+      margin: 10px 0;
+    }
+
+    .estrelas {
+      color: #4CAF50;
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <section class="testemunhos">
+    <h2>Empresas parceiras satisfeitas</h2>
+    <div class="linha-verde"></div>
+    
+    <div class="container">
+      <!-- Empresa 1 -->
+      <div class="card">
+        <img src="/images/logohorizonte.png" alt="Logo Colégio Horizonte" class="logo_empresa">
+        <h3>Colégio Horizonte</h3>
+        <div class="estrelas">★★★★★</div>
+        <p>“Desde que implementamos o SafeSpace, notamos uma melhoria significativa na comunicação entre alunos e equipe pedagógica. Ferramenta indispensável.”</p>
+      </div>
+
+      <!-- Empresa 2 -->
+      <div class="card">
+        <img src="/images/logoinsituto.png" alt="Logo Instituto Educar Melhor" class="logo_empresa">
+        <h3>Instituto Educar Melhor</h3>
+        <div class="estrelas">★★★★★</div>
+        <p>“A confidencialidade oferecida pela plataforma permite que os alunos se expressem com mais liberdade. Um avanço na cultura escolar.”</p>
+      </div>
+
+      <!-- Empresa 3 -->
+      <div class="card">
+        <img src="/images/logocuidar.png" alt="Logo Fundação Cuidar" class="logo_empresa">
+        <h3>Fundação Cuidar</h3>
+        <div class="estrelas">★★★★★</div>
+        <p>“O SafeSpace nos ajudou a identificar e resolver situações delicadas antes que se agravassem. Segurança emocional virou prioridade.”</p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
+
 
         <section id="sobre" class="sobre">
             <div class="interface">
