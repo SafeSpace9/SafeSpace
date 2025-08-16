@@ -20,10 +20,10 @@
                 <h1>SafeSpace</h1>
                 <p>Cadastro de Estudante</p>
             </div>
-            <form id="registerForm" class="login-form">
+            <form id="loginForm" class="login-form">
                 <div class="input-group">
                     <i class="fas fa-user"></i>
-                    <input type="text" id="fullName" placeholder="Nome Completo" required>
+                    <input type="text" id="nome" placeholder="Nome Completo" required>
                 </div>
                 <div class="input-group">
                     <i class="fas fa-envelope"></i>
@@ -31,16 +31,11 @@
                 </div>
                 <div class="input-group">
                     <i class="fas fa-id-card"></i>
-                    <input type="text" id="matricula" placeholder="Matrícula" required>
+                    <input type="text" id="rm" placeholder="Matrícula" required>
                 </div>
                 <div class="input-group">
                     <i class="fas fa-lock"></i>
                     <input type="password" id="password" placeholder="Senha" required>
-                    <i class="fas fa-eye toggle-password"></i>
-                </div>
-                <div class="input-group">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" id="confirmPassword" placeholder="Confirmar Senha" required>
                     <i class="fas fa-eye toggle-password"></i>
                 </div>
                 <div class="error-message" id="errorMessage"></div>
@@ -61,52 +56,7 @@
         </div>
     </div>
 
-    <script>
-        // Toggle password visibility
-        document.querySelectorAll('.toggle-password').forEach(icon => {
-            icon.addEventListener('click', function() {
-                const input = this.previousElementSibling;
-                if (input.type === 'password') {
-                    input.type = 'text';
-                    this.classList.remove('fa-eye');
-                    this.classList.add('fa-eye-slash');
-                } else {
-                    input.type = 'password';
-                    this.classList.remove('fa-eye-slash');
-                    this.classList.add('fa-eye');
-                }
-            });
-        });
-
-        // Form submission
-        document.getElementById('registerForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            const errorMessage = document.getElementById('errorMessage');
-            
-            if (password !== confirmPassword) {
-                errorMessage.textContent = 'As senhas não coincidem';
-                return;
-            }
-            
-            // Aqui você pode adicionar a lógica para enviar os dados para o servidor
-            // Por exemplo:
-            /*
-            const formData = {
-                fullName: document.getElementById('fullName').value,
-                email: document.getElementById('email').value,
-                matricula: document.getElementById('matricula').value,
-                password: password
-            };
-            */
-            
-            // Por enquanto, apenas mostra uma mensagem de sucesso
-            alert('Cadastro realizado com sucesso!');
-            window.location.href = '/views/Login.html';
-        });
-    </script>
+    <script src="/scripts/cadastro.js"></script>
 </body>
 
 </html>

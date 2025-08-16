@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/styles/style.css">
     <script src="/scripts/script.js" defer></script>
+    <script src="/scripts/logout.js" defer></script>
     <title>SafeSpace</title>               
 </head>
 <body>
@@ -337,24 +338,24 @@
             
     </footer>
     <script>
-          (function (w, d, s, o, f, js, fjs) {
-      w["botsonic_widget"] = o;
-      w[o] =
-        w[o] ||
-        function () {
-          (w[o].q = w[o].q || []).push(arguments);
-        };
-      (js = d.createElement(s)), (fjs = d.getElementsByTagName(s)[0]);
-      js.id = o;
-      js.src = f;
-      js.async = 1;
-      fjs.parentNode.insertBefore(js, fjs);
-    })(window, document, "script", "Botsonic", "https://widget.botsonic.com/CDN/botsonic.min.js");
-    Botsonic("init", {
-      serviceBaseUrl: "https://api-azure.botsonic.ai",
-      token: "60f0098a-2901-4f95-8ce9-c06753437877",
-    });
-      </script>
+  (function (w, d, s, o, f, js, fjs) {
+    w["botsonic_widget"] = o;
+    w[o] =
+      w[o] ||
+      function () {
+        (w[o].q = w[o].q || []).push(arguments);
+      };
+    (js = d.createElement(s)), (fjs = d.getElementsByTagName(s)[0]);
+    js.id = o;
+    js.src = f;
+    js.async = 1;
+    fjs.parentNode.insertBefore(js, fjs);
+  })(window, document, "script", "Botsonic", "https://widget.botsonic.com/CDN/botsonic.min.js");
+  Botsonic("init", {
+    serviceBaseUrl: "https://api-bot.writesonic.com",
+    token: "1e506c4f-64fd-4c02-9730-52ddb7a2c5ed",
+  });
+</script>
     <script src="/script.js"></script>
 </body>
 </html>

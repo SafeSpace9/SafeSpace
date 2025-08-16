@@ -98,6 +98,25 @@ a:hover {
   font-weight: 600;
 }
 /* nav de pc */
+
+/* Botão de logout */
+.logout-button {
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    margin-left: 15px;
+}
+
+.logout-button:hover {
+    background-color: #cc3333;
+    opacity: 1;
+}
 nav {
   display: flex;
   justify-content: space-around;

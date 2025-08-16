@@ -43,44 +43,21 @@ class MobileNavbar {
   );
   mobileNavbar.init();
 
-  const modal = document.getElementById("myModal");
-  const closeBtn = document.querySelector(".close");
-  const openModalBtn = document.getElementById("openlogin");
-  
-  // Abre a modal
-  openModalBtn.onclick = function(event) {
-    event.preventDefault(); 
-    openModal(); 
+  // Função para mostrar opções de login
+  function showLoginOptions() {
+    document.getElementById('loginOptionsModal').style.display = 'flex';
   }
-  function openModal() {
-    modal.style.display = "flex"; 
-    document.body.style.overflow = "hidden"; 
+
+  // Função para fechar modal de login
+  function closeLoginModal() {
+    document.getElementById('loginOptionsModal').style.display = 'none';
   }
-  closeBtn.onclick = function() {
-    modal.style.display = "none";
-    document.body.style.overflow = ""; 
-  }
-  window.onclick = function(event) {  
+
+  // Fechar o modal se clicar fora dele
+  window.onclick = function (event) {
+    const modal = document.getElementById('loginOptionsModal');
     if (event.target == modal) {
-      modal.style.display = "none";
-      document.body.style.overflow = ""; 
-    }
-  }
-  document.getElementById("login-form").onsubmit = function(event) {
-    event.preventDefault(); 
-    console.log("Formulário enviado!");
-  }
-  document.getElementById("login-form").onsubmit = function(event) {
-    event.preventDefault(); 
-    const email = document.getElementById("email").value;
-    const senha = document.getElementById("senha").value;
-    if (email === "admin1@gmail.com" && senha === "senha123") {
-      alert("Login bem-sucedido!");
-      window.location.href = "formulario.html";
-      modal.style.display = "none";
-      document.body.style.overflow = ""; 
-    } else {
-      alert("Usuário ou senha incorretos!");
+      modal.style.display = 'none';
     }
   }
 
