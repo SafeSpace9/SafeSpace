@@ -10,15 +10,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Credenciais mockadas para teste
     const MOCK_CREDENTIALS = {
-        username: 'admin',
-        password: 'admin123'
+        username: 'admin@gmail.com',
+        password: 'admin1'
     };
 
     // Toggle password visibility
     togglePassword.addEventListener('click', () => {
         const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
         passwordInput.setAttribute('type', type);
-        togglePassword.classList.toggle('fa-eye');
+        togglePassword.classList.toggle('fa-eye');                                                  
         togglePassword.classList.toggle('fa-eye-slash');
     });
 

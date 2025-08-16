@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="/styles/form.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,55 +11,129 @@
 <body>
     <header>
         <nav>
-          <a class="logo" href="index.html"><img id="logoside" src="/images/logo-space-removebg.png" alt=""> Safe<span class="color-space">Space</span></a>
+          <a class="logo" href="../index.html"><img id="logoside" src="/images/logo-space-removebg.png" alt=""> Safe<span class="color-space">Space</span></a>
           <div class="mobile-menu">
             <div class="line1"></div>
             <div class="line2"></div>
             <div class="line3"></div>
           </div> <!--mobile-menu--> 
-
         </nav>
-      </header> <!--header-->
+    </header> <!--header-->
+
     <div class="form-container">
-        <img  src="/images/logo-space-removebg.png" alt="SafeSpace Logo" class="form-logo">
-        <h1 class="form-title">Envie sua Denúncia Anônima</h1>
-        <p class="form-description">Contribua para um ambiente escolar seguro, enviando sua denúncia ou feedback anonimamente.</p>
+        <div class="form-header">
+            <img src="/images/logo-space-removebg.png" alt="SafeSpace Logo" class="form-logo">
+            <h1 class="form-title">Envie sua Denúncia Anônima</h1>
+            <p class="form-description">
+                <i class="fas fa-shield-alt"></i>
+                Contribua para um ambiente escolar seguro, enviando sua denúncia ou feedback anonimamente.
+            </p>
+        </div>
 
         <form id="denunciaForm" class="form-content" action="/api/denuncia" method="POST" enctype="multipart/form-data">
             <!-- Tipo de Denúncia -->
-            <label for="tipoDenuncia">Tipo de ocorrência</label>
-            <select id="tipodenuncia" name="tipoDenuncia">
-                <option  value="denuncia">Denúncias</option>
-                <option value="feedback">Feedback</option>
-            </select>
+            <div class="form-group">
+                <label for="tipoDenuncia">
+                    <i class="fas fa-clipboard-list"></i>
+                    Tipo de ocorrência
+                </label>
+                <div class="select-wrapper">
+                    <select id="tipodenuncia" name="tipoDenuncia">
+                        <option value="denuncia">Denúncias</option>
+                        <option value="feedback">Feedback</option>
+                    </select>
+                    <i class="fas fa-chevron-down select-arrow"></i>
+                </div>
+            </div>
 
             <!-- Tipo de Problema -->
-            <label for="tipoProblema">Tipo de Problema</label>
-            <select id="tipoproblema" name="tipoProblema">
-                <option value="bullying">Bullying</option>
-                <option value="assedio">Assédio</option>
-                <option value="violencia">Violência</option>
-                <option value="discriminacao">Discriminação</option>
-                <option value="outra">Outra</option>
-            </select>
+            <div class="form-group">
+                <label for="tipoProblema">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Tipo de Problema
+                </label>
+                <div class="select-wrapper">
+                    <select id="tipoproblema" name="tipoProblema">
+                        <option value="">Selecione o tipo de problema</option>
+                        <option value="bullying">Bullying</option>
+                        <option value="assedio">Assédio</option>
+                        <option value="violencia">Violência</option>
+                        <option value="discriminacao">Discriminação</option>
+                        <option value="outra">Outra</option>
+                    </select>
+                    <i class="fas fa-chevron-down select-arrow"></i>
+                </div>
+            </div>
 
             <!-- Assunto -->
-            <label for="assunto">Assunto</label>
-            <input class="remove-outline" type="text" id="assunto" name="assunto" placeholder="Digite o assunto">
+            <div class="form-group">
+                <label for="assunto">
+                    <i class="fas fa-heading"></i>
+                    Assunto
+                </label>
+                <input type="text" id="assunto" name="assunto" placeholder="Digite o assunto da sua denúncia">
+            </div>
 
             <!-- Descrição -->
-            <label for="descricao">Descrição</label>
-            <textarea class="remove-outline" id="descricao" name="descricao" placeholder="Descreva sua denúncia ou feedback"></textarea>
+            <div class="form-group">
+                <label for="descricao">
+                    <i class="fas fa-align-left"></i>
+                    Descrição
+                </label>
+                <textarea id="descricao" name="descricao" placeholder="Descreva detalhadamente sua denúncia ou feedback..."></textarea>
+                <div class="char-counter">
+                    <span id="charCount">0</span>/1000 caracteres
+                </div>
+            </div>
 
-            <!-- Anexar Arquivos (Opcional) -->
-            <label for="arquivo">Anexar Arquivo (Opcional)</label>
-            <input type="file" id="arquivo" name="arquivo" multiple>
-            <ul id="fileList"></ul>
+            <!-- Anexar Arquivos -->
+            <div class="form-group">
+                <label for="arquivo">
+                    <i class="fas fa-paperclip"></i>
+                    Anexar Arquivos (Opcional)
+                </label>
+                <div class="file-upload-area">
+                    <input type="file" id="arquivo" name="arquivo" multiple>
+                    <div class="file-upload-content">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Clique para selecionar arquivos ou arraste aqui</p>
+                        <span class="file-types">PDF, JPG, PNG, DOC (máx. 5MB cada)</span>
+                    </div>
+                </div>
+                <ul id="fileList" class="file-list"></ul>
+            </div>
 
             <!-- Botão de Envio -->
-            <button type="submit" id="button_denuncia" class="form-button">Enviar Denúncia</button>
+            <div class="form-actions">
+                <button type="submit" id="button_denuncia" class="form-button">
+                    <i class="fas fa-paper-plane"></i>
+                    Enviar Denúncia
+                </button>
+                <button type="button" class="form-button-secondary" onclick="window.location.href='../index.html'">
+                    <i class="fas fa-arrow-left"></i>
+                    Voltar
+                </button>
+            </div>
         </form>
+
+        <!-- Informações de Segurança -->
+        <div class="security-info">
+            <div class="security-item">
+                <i class="fas fa-user-secret"></i>
+                <span>100% Anônimo</span>
+            </div>
+            <div class="security-item">
+                <i class="fas fa-lock"></i>
+                <span>Dados Criptografados</span>
+            </div>
+            <div class="security-item">
+                <i class="fas fa-clock"></i>
+                <span>Resposta em 24h</span>
+            </div>
         </div>
-        <script src="/scripts/form.js"></script>
-    </body>
-    </html>
+    </div>
+
+    <script src="/scripts/form.js"></script>
+    <script src="/scripts/logout.js"></script>
+</body>
+</html>
